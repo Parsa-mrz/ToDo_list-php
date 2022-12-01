@@ -66,6 +66,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Applications/MAMP/htdocs/Projects/ToDo/assets/js&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
@@ -73,6 +74,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/js" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/bootstrap" />
     </key>
@@ -89,6 +93,9 @@
       <workItem from="1669469685396" duration="12054000" />
       <workItem from="1669492134851" duration="2756000" />
       <workItem from="1669557172671" duration="27000" />
+      <workItem from="1669841877523" duration="5003000" />
+      <workItem from="1669883289072" duration="438000" />
+      <workItem from="1669914312375" duration="3997000" />
     </task>
     <servers />
   </component>

@@ -12,7 +12,10 @@ body {
     font-smoothing: antialiased;
     background: linear-gradient(173deg, #54b9cd, #298fa4);;
 }
-
+.clickable:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
 .page {
     position: absolute;
     width: 80%;
