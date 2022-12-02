@@ -60,3 +60,12 @@ function deleteTask($delete_task){
     $statement->execute([$delete_task]);
     return $statement->rowCount();
 }
+
+function doneSwitch($task_id){
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $query ='UPDATE Todo.tasks SET is_done = 1 - is_done WHERE user_id = :userID AND id = :taskID';
+    $statement = $pdo->prepare($query);
+    $statement->execute([':userID' => getCurrentUserId(),':taskID' => $task_id]);
+    return $statement->rowCount();
+}

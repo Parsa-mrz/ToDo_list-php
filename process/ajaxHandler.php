@@ -12,6 +12,11 @@ if(!isset($_POST['action']) || empty($_POST['action'])){
         diePage('Invalid Action!');
 }
 switch ($_POST['action']){
+
+    case 'doneSwitch':
+        $task_id = $_POST['taskId'];
+        doneSwitch($task_id);
+        break;
     case 'addFolder':
         echo addFolders($_POST['folderName']);
         break;

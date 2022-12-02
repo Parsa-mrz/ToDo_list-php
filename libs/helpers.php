@@ -17,3 +17,6 @@ function dd($var){
     var_dump($var);
     echo "</pre>";
 }
+function site_url($uri = ''){
+    return BASE_URL . $uri;
+}
