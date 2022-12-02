@@ -5,6 +5,9 @@ function diePage($msg){
     echo "<div>$msg</div>";
     die();
 }
+function message($msg){
+    echo "<div style='display: inline-block; padding: 16px; z-index: 9999; position: relative; background: #969696; color: #fff;'>$msg</div>";
+}
 function isAjaxRequest(){
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'){
 //    request is ajax

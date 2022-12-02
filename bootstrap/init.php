@@ -1,10 +1,10 @@
 <?php
 
 global $pdo;
-include ("constants.php");
-include (BASE_PATH . "/bootstrap/config.php");
-include (BASE_PATH . '/vendor/autoload.php');
-include (BASE_PATH . "/libs/helpers.php");
+include_once ("constants.php");
+include_once (BASE_PATH . "/bootstrap/config.php");
+include_once (BASE_PATH . '/vendor/autoload.php');
+include_once (BASE_PATH . "/libs/helpers.php");
 
 
 try{
@@ -15,6 +15,6 @@ catch (PDOExection $e){
     echo 'error' . $e->getMessage();
     exit;
 }
-include (BASE_PATH . "/libs/lib-auth.php");
-include (BASE_PATH . "/libs/lib-tasks.php");
+include_once (BASE_PATH . "/libs/lib-auth.php");
+include_once (BASE_PATH . "/libs/lib-tasks.php");
 
