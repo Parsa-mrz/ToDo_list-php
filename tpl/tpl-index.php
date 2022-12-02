@@ -10,7 +10,9 @@
 <div class="page">
     <div class="pageHeader">
         <div class="title">Dashboard</div>
-        <div class="userPanel"><i class="fa fa-chevron-down"></i><span class="username">John Doe</span><img src="https://s3.amazonaws.com/uifaces/faces/twitter/kolage/73.jpg" width="40" height="40"/></div>
+        <div class="userPanel">
+            <a href="<?= site_url('?logout=1') ?>"><i style=" font-size: 25px;color: #fff;" class="fa-sharp fa-solid fa-right-from-bracket"></i></a>
+            <span class="username"><?= $user->name ?></span><img src="<?= $user->image ?>" width="40" height="40"/></div>
     </div>
     <div class="main">
         <div class="nav">
@@ -50,11 +52,6 @@
             <div class="viewHeader">
                 <div class="title">
                         <input style="margin-left: 0; width: 100%; line-height: 30px; margin-top: 3%;" type="text" id="TaskNameInput" placeholder="Add New Task">
-                </div>
-                <div class="functions">
-                    <div class="button active">Add New Task</div>
-                    <div class="button">Completed</div>
-                    <div class="button inverz"><i class="fa fa-trash-alt"></i></div>
                 </div>
             </div>
             <div class="content">

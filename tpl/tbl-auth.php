@@ -1,14 +1,13 @@
-<!doctype html>
-<html lang="en">
+
+<!DOCTYPE html>
+<html lang="en" >
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="assets/css/login-form.css">
+    <title>7Todo Authentication</title>
+    <link rel="stylesheet" href="<?= site_url('assets/css/login-form.css') ?>">
+
 </head>
 <body>
-<form<body>
 <!-- partial:index.partial.html -->
 <div id="background">
     <div id="panel-box">
@@ -16,17 +15,17 @@
             <div class="auth-form on" id="login">
                 <div id="form-title">Log In</div>
                 <form action="<?= site_url('auth.php?action=login') ?>" method="POST">
-                    <input name="email" type="text" required="required" placeholder="email"/>
-                    <input name="password" type="password" required="required" placeholder="password"/>
+                    <input name="email" type="text" required="required" placeholder="Email"/>
+                    <input name="password" type="password" required="required" placeholder="Password"/>
                     <button type="Submit">Log In</button>
                 </form>
             </div>
             <div class="auth-form" id="signup" >
                 <div id="form-title">Register</div>
                 <form action="<?= site_url('auth.php?action=register') ?>" method="POST">
-                    <input name="name" type="text" required="required" placeholder="full name"/>
-                    <input name="password" type="password" required="required" placeholder="password"/>
-                    <input name="email" type="email" required="required" placeholder="email"/>
+                    <input name="name" type="text" required="required" placeholder="Username"/>
+                    <input name="password" type="password" required="required" placeholder="Password"/>
+                    <input name="email" type="text" required="required" placeholder="Email"/>
                     <button type="Submit">Sign Up</button>
                 </form>
             </div>
@@ -39,10 +38,7 @@
     </div>
 </div>
 <!-- partial -->
-<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script><script  src="./script.js"></script>
-
-</body>
-<script src="assets/js/script.js"></script>
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script>
     $('#switch').click(function(){
         $(this).text(function(i, text){
@@ -55,5 +51,6 @@
         $('#image-overlay').toggleClass("two");
     })
 </script>
+
 </body>
 </html>

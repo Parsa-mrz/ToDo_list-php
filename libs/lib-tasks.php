@@ -3,7 +3,7 @@ defined('BASE_PATH') OR die("Permision Denied!");
 //**** Folder Function ****
 function getFolders(){
     global $pdo;
-    $current_user_id = getCurrentUserId();
+    $current_user_id = getLoggedInUser()->id;
     $query ='SELECT * FROM Todo.folders WHERE user_id = ?';
     $statement = $pdo->prepare($query);
     $statement->execute([$current_user_id]);
@@ -13,7 +13,7 @@ function getFolders(){
 
 function addFolders($folder_name){
     global $pdo;
-    $current_user_id = getCurrentUserId();
+    $current_user_id = getLoggedInUser()->id;
     $query ="INSERT INTO Todo.folders (name,user_id,created_at) values (:folder_name,:user_id,NOW())";
     $statement = $pdo->prepare($query);
     $statement->execute([':folder_name' => $folder_name, ':user_id' => $current_user_id]);
@@ -36,7 +36,7 @@ function getTasks(){
     if (isset($folder) and is_numeric($folder)) {
         $folderCondition = "and folder_id = $folder";
     }
-    $current_user_id = getCurrentUserId();
+    $current_user_id = getLoggedInUser()->id;
     $query ="SELECT * FROM Todo.tasks WHERE user_id = $current_user_id $folderCondition";
     $statement = $pdo->prepare($query);
     $statement->execute();
@@ -46,7 +46,7 @@ function getTasks(){
 
 function addTasks($taskTile,$folder_id){
     global $pdo;
-    $current_user_id = getCurrentUserId();
+    $current_user_id = getLoggedInUser()->id;
     $query ="INSERT INTO Todo.tasks (title,folder_id,user_id,created_at) values (:task_title,:folder_id,:user_id,NOW())";
     $statement = $pdo->prepare($query);
     $statement->execute([':task_title' => $taskTile, ':folder_id' => $folder_id, ':user_id' => $current_user_id]);
@@ -63,9 +63,9 @@ function deleteTask($delete_task){
 
 function doneSwitch($task_id){
     global $pdo;
-    $current_user_id = getCurrentUserId();
+    $current_user_id = getLoggedInUser()->id;
     $query ='UPDATE Todo.tasks SET is_done = 1 - is_done WHERE user_id = :userID AND id = :taskID';
     $statement = $pdo->prepare($query);
-    $statement->execute([':userID' => getCurrentUserId(),':taskID' => $task_id]);
+    $statement->execute([':userID' => $current_user_id,':taskID' => $task_id]);
     return $statement->rowCount();
 }

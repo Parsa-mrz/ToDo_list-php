@@ -6,7 +6,7 @@ function diePage($msg){
     die();
 }
 function message($msg){
-    echo "<div style='display: inline-block; padding: 16px; z-index: 9999; position: relative; background: #969696; color: #fff;'>$msg</div>";
+    echo "<div style='display: inline-block; padding: 16px; z-index: 9999; position: relative; border-radius: 0 10px 10px 0; background: #969696; color: #fff;'>$msg</div>";
 }
 function isAjaxRequest(){
     if (isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest'){
@@ -22,4 +22,9 @@ function dd($var){
 }
 function site_url($uri = ''){
     return BASE_URL . $uri;
+}
+
+function redirect($url){
+    header("Location: $url");
+    die();
 }

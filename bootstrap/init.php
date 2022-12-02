@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 global $pdo;
 include_once ("constants.php");
 include_once (BASE_PATH . "/bootstrap/config.php");
