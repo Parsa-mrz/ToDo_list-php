@@ -1,8 +1,15 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2706
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+This ToDo List is coded with Authentication system and the following languages:
+PHP
+jQuery
+HTML
+CSS
 
-\f0\fs24 \cf0 df}
+![Main](https://user-images.githubusercontent.com/91504922/205370860-cf238234-dc52-43ca-ad30-897aeb9f3814.png)
+Dashboard
+
+
+![Login](https://user-images.githubusercontent.com/91504922/205371653-0f9c1f56-c875-4da9-b2fe-801a3fcda029.png)
+Login Form
+
+![Register](https://user-images.githubusercontent.com/91504922/205371686-9a808425-74e9-45a8-8324-91e2d8851a9f.png)
+Register Form
