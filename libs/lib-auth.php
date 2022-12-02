@@ -1,4 +1,5 @@
 <?php
+defined('BASE_PATH') OR die("Permision Denied!");
 
 //**** get user current id ****
 function getCurrentUserId(){

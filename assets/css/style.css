@@ -134,6 +134,10 @@ btn{
 .main .nav .menu ul {
     padding-left: 0px;
 }
+.main .nav .menu ul li.active a {
+    text-decoration: none;
+    color: 79bc46;
+}
 .main .nav .menu ul li a {
     text-decoration: none;
     color: #0c7388;
@@ -184,6 +188,7 @@ btn{
     padding: 0px;
     color: #aaa;
     margin-top: -18px;
+    width: 43%;
 }
 .main .view .viewHeader .functions {
     float: right;
@@ -208,11 +213,9 @@ btn{
 .main .view .viewHeader .functions .button.inverz {
     background-color: inherit;
     border: 1px solid #aaa;
-    width: 10px;
     color: #aaa;
     font-size: 1.3em;
-    padding-left: 10px;
-    padding-right: 16px;
+    padding-top: 9px;
 }
 .main .view .content {
     position: absolute;
@@ -286,4 +289,21 @@ btn{
 
 .clear {
     clear: both;
+}
+span.created_at {
+    font-size: 11px;
+    margin-right: 14px;
+}
+.info i {
+    color: #da0d0d;
+    transition: 0.4s all ease;
+}
+.info i:hover {
+    color: red;
+    cursor: pointer;
+    scale: 1.2;
+}
+li.all-task {
+    display: block!important;
+    color: #0c7388;
 }

@@ -1,7 +1,5 @@
 <?php
-
-
-
+defined('BASE_PATH') OR die("Permision Denied!");
 //**** Folder Function ****
 function getFolders(){
     global $pdo;
@@ -32,13 +30,33 @@ function deleteFolder($delete_folder){
 
 //**** Task Function ****
 function getTasks(){
-
+    global $pdo;
+    $folder = $_GET['folder_id'] ?? null;
+    $folderCondition = '';
+    if (isset($folder) and is_numeric($folder)) {
+        $folderCondition = "and folder_id = $folder";
+    }
+    $current_user_id = getCurrentUserId();
+    $query ="SELECT * FROM Todo.tasks WHERE user_id = $current_user_id $folderCondition";
+    $statement = $pdo->prepare($query);
+    $statement->execute();
+    $folders = $statement->fetchAll();
+    return $folders;
 }
 
-function addTasks(){
-
+function addTasks($taskTile,$folder_id){
+    global $pdo;
+    $current_user_id = getCurrentUserId();
+    $query ="INSERT INTO Todo.tasks (title,folder_id,user_id,created_at) values (:task_title,:folder_id,:user_id,NOW())";
+    $statement = $pdo->prepare($query);
+    $statement->execute([':task_title' => $taskTile, ':folder_id' => $folder_id, ':user_id' => $current_user_id]);
+    return $statement->rowCount();
 }
 
-function deleteTask(){
-
+function deleteTask($delete_task){
+    global $pdo;
+    $query ='DELETE FROM Todo.tasks WHERE id = ?';
+    $statement = $pdo->prepare($query);
+    $statement->execute([$delete_task]);
+    return $statement->rowCount();
 }

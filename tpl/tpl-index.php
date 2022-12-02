@@ -22,17 +22,23 @@
             <div class="menu">
                 <div class="title">Folders</div>
                 <ul class="folder-list">
+                    <li class="<?= isset($_GET['folder_id']) ? '' : 'active' ?> all-task"> <i class="fa fa-folder"></i>All Tasks</li>
                     <?php
-                    foreach ($folders as $folder){?>
-                       <li>
+                    foreach ($folders as $folder){
+                        $currentFolder = '';
+                        if (!empty($_GET['folder_id']) && ($_GET['folder_id'] === $folder->id)) {
+                            $currentFolder = 'active';
+                        } else {
+                            $currentFolder = '';
+                        }
+                        ?>
+                       <li class="<?= $currentFolder ?>">
                            <a href="?folder_id=<?=$folder->id?>" ><i class="fa fa-folder"></i><?= $folder->name ?></a>
-                           <a href="?delete_folder=<?=$folder->id?>" ><i class="fa fa-trash-alt"></i></a>
+                           <a href="?delete_folder=<?=$folder->id?>" onclick="return confirm('Are You Sure Delete This Task?')" ><i class="fa fa-trash-alt"></i></a>
                        </li>
                         <?php
-                    }
-                    ?>
-                    <li class="active"> <i class="fa fa-folder"></i>Home</li>
-
+                     }
+                     ?>
                 </ul>
             </div>
             <div >
@@ -42,38 +48,35 @@
         </div>
         <div class="view">
             <div class="viewHeader">
-                <div class="title">Manage Tasks</div>
+                <div class="title">
+                        <input style="margin-left: 0; width: 100%; line-height: 30px; margin-top: 3%;" type="text" id="TaskNameInput" placeholder="Add New Task">
+                </div>
                 <div class="functions">
                     <div class="button active">Add New Task</div>
                     <div class="button">Completed</div>
-                    <div class="button inverz"><i class="fa fa-trash-o"></i></div>
+                    <div class="button inverz"><i class="fa fa-trash-alt"></i></div>
                 </div>
             </div>
             <div class="content">
                 <div class="list">
-                    <div class="title">Today</div>
+                    <div class="title">Tasks</div>
                     <ul>
-                        <li class="checked"><i class="fa fa-check-square-o"></i><span>Update team page</span>
-                            <div class="info">
-                                <div class="button green">In progress</div><span>Complete by 25/04/2014</span>
-                            </div>
-                        </li>
-                        <li><i class="fa fa-square-o"></i><span>Design a new logo</span>
-                            <div class="info">
-                                <div class="button">Pending</div><span>Complete by 10/04/2014</span>
-                            </div>
-                        </li>
-                        <li><i class="fa fa-square-o"></i><span>Find a front end developer</span>
-                            <div class="info"></div>
-                        </li>
-                    </ul>
-                </div>
-                <div class="list">
-                    <div class="title">Tomorrow</div>
-                    <ul>
-                        <li><i class="fa fa-square-o"></i><span>Find front end developer</span>
-                            <div class="info"></div>
-                        </li>
+                        <?php if (sizeof($tasks)) {?>
+                               <?php foreach ($tasks as $task){?>
+                                    <li class="<?= $task->is_done ? 'checked' : '' ; ?>">
+                                        <i class=" <?= $task->is_done ? 'fa-solid fa-check' : 'fa-thin fa-square' ; ?>"></i>
+                                        <span><?= $task->title;?></span>
+                                        <div class="info">
+                                            <span class="created_at">Created At <?= $task->created_at ?></span><a href="?delete_task=<?=$task->id?>" onclick="return confirm('Are You Sure Delete This Task?\n<?= $task->title ?>')" ><i class="fa fa-trash-alt"></i></a>
+                                        </div>
+                                    </li>
+                        <?php
+                        } ?>
+                        <?php
+                        } else {?>
+                           <li>No Task Available For This Folder ! </li>
+                        <?php
+                        } ?>
                     </ul>
                 </div>
             </div>
@@ -92,12 +95,32 @@
                 data : {action: "addFolder", folderName: input.val()},
                 success : function (response){
                     if(response = '1'){
-                        $('<li><a href="?folder_id=<?=$folder->id?>"><i class="fa fa-folder"></i>'+input.val()+'</a><a href="?delete_folder=<?=$folder->id?>"><i class="fa fa-trash-alt"></i></a></li>').appendTo("ul.folder-list");
+                        $('<li><a href="#"><i class="fa fa-folder"></i>'+input.val()+'</a><a><i class="fa fa-trash-alt"></i></a></li>').appendTo("ul.folder-list");
                     }else {
                         alert(response)
                     }
                 },
-            }) });
+            })
+        });
+
+        $('#TaskNameInput').keypress(function (e){
+            e.stopPropagation();
+            if(e.which == 13){
+                $.ajax({
+                    url : "process/ajaxHandler.php",
+                    method : "POST",
+                    data : {action: "addTask", folderId :<?= $_GET['folder_id'] ?> ,taskTitle: $('#TaskNameInput').val()},
+                    success : function (response){
+                        if (response = '1'){
+                            location.reload();
+                        }else {
+                            alert(response);
+                        }
+                    },
+                })
+            }
+        })
+        $('#TaskNameInput').focus();
         })
 </script>
 </body>

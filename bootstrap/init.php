@@ -1,4 +1,5 @@
 <?php
+
 global $pdo;
 include ("constants.php");
 include (BASE_PATH . "/bootstrap/config.php");
